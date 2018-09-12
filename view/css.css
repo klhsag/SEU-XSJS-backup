@@ -1,0 +1,183 @@
+﻿body{
+	background-color: #fff9ed;
+	background-image: url(../img/seu_logo_2.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.box-shadow1{
+    position:relative;
+    box-shadow: 0 30px 120px rgba(0,0,0,0.5);
+}
+
+.big-page{
+	background-color: rgb(255,255,255);
+	text-align: center;
+	padding-bottom: 1em;
+
+}
+
+.login-title{
+	background-color: #009688;
+	color:#fff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+	margin:0;
+}
+
+.note{
+	border-top: 1px solid rgba(0,0,0,.1);
+	background-color: rgba(255,255,255,0.3);
+	color:rgba(100,100,100,1);
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+}
+
+.notice{
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	color:rgba(100,100,100,1);
+	padding:20px;
+	font-size: 15px;
+	line-height: 24px;
+	margin-bottom: 10px;
+}
+
+.dialog{
+	padding: 10px 0;                                  /*内边距*/
+	width:100%;
+	max-width:600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	background: rgb(255,255,255);
+	background: rgba(255, 255, 255, 0.7); 
+	/*-webkit-box-shadow: 0 0 10px rgb(200,200,200);     /*设置form表单透明度*/ /*chrome, 先留着*/
+	text-align: center;
+	overflow: hidden;
+}
+.login_info_box{
+	width: 60%;
+	margin: 30px auto;
+	background-color: rgba(255,255,255,0.7);
+	border-radius: 15px;
+	padding: 0px 30px;
+}
+
+.btn{                        /*由于使用了库, 这之中很多属性没能产生作用*/
+	margin: 5px auto;
+	min-width: 120px;
+	/*height: 28px;                                         /*实际使用UI库的高度*/
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	/*text-shadow: 0px -1px 0px #5b6ddc; */                 /*还是别开这个效果比较好*/
+	border-width: 1px;                                            /*注意统计这个宽度*/
+	border-color: #78a5f1;                                  /*保持颜色一致*/
+
+	cursor: pointer;
+	background-color: #78a5f1;  
+}
+.btn:hover{
+	background-color: #5f73e9;
+	background-image: -webkit-linear-gradient(bottom,#5f73e9 0%,#859bef 100%);
+	background-image: -moz-linear-gradient(bottom,#5f73e9 0%,#859bef 100%);
+	background-image: -ms-linear-gradient(bottom,#5f73e9 0%,#859bef 100%);
+	background-image: -o-linear-gradient(bottom,#5f73e9 0%,#859bef 100%);
+	box-shadow: inset 0px 1px 0px #aab9f4;
+}
+.register{
+	margin: 5px auto;
+	width: 80px;
+	/*height: 28px;*/                                       /*使用UI库的高度*/
+	/*color: #78a5f1;*/                                         /*对称颜色*/
+	font-weight: bold;
+	font-size: 16px;
+	border-width: 1px;
+	border-color: #CCCCCC;
+		    /*-webkit-background-clip: padding-box;
+		    background-clip: padding-box; */
+		    /*border-radius: 2px;*/
+		    cursor: pointer;
+		    background-color: white;  
+		}
+		.title{
+			/*font-size: 20px;*/
+			/*white-space:nowrap; 阻止换行*/
+		}
+
+		#materialModal{
+			font-family:roboto;
+			color:#222;
+			position:fixed;
+			top:0px;
+			left:0px;
+			width:100%;
+			height:100%;
+			background:rgba(0,0,0,0.5);
+			display:table;
+			z-index:1000;
+		}
+		#materialModalCentered{
+			display:table-cell;
+			vertical-align:middle;
+		}
+		#materialModalContent{
+			padding:10px;
+			position:relative;
+			background:white;
+			width:400px;
+			min-height:200px;
+			margin:auto;
+			box-shadow:0px 10px 20px 0px rgba(0,0,0,0.4);
+			box-sizing:border-box;
+		}
+		#materialModalTitle{
+			margin:10px;
+			font-weight:bold;
+			font-size:1.2em;
+		}
+		#materialModalText{
+			margin:10px;
+			margin-bottom:40px;
+		}
+		#materialModalButtons{
+			width:calc(100% - 20px);
+			position:absolute;
+			bottom:0px;
+		}
+		.materialModalButton{
+			margin:10px;
+			font-weight:bold;
+			cursor:pointer;
+			text-align:center;
+			float:right;
+			text-transform:uppercase;
+			padding:10px;
+		}
+		#materialModal.hide{
+			display: none;
+			opacity:0;
+			transition:opacity 0.2s ease-out;
+			pointer-events:none;
+		}
+		#materialModal.hide #materialModalCentered{
+			transform:scale(0);
+			transition:transform 0.2s ease-out;
+		}
+		#materialModal.show{
+			opacity:1;
+			transition:opacity 0.2s ease-in;
+		}
+		#materialModal.show #materialModalCentered{
+			transform:scale(1);
+			transition:transform 0.2s ease-in;
+		}

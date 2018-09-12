@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>注册申请-校史校情知识竞赛2018</title>
+
+	<link rel="stylesheet" href="view/icon.css">
+    <link rel="stylesheet" href="view/material.indigo-blue.min.css">
+    <script defer src="js/material.min.js"></script>                          <!--引入的三个UI库-->
+
+    <script src="/js/register-helper.js" charset="utf-8"></script>  <!--引入, 提供一些函数-->
+    <link href="/view/css.css" type="text/css" rel="stylesheet" />
+    <script src="js/material-modal.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="register" class="dialog box-shadow1" style="background-color: rgb(255,255,255);">
+	<div class="login-title">学生信息注册</div>
+	<div class="notice">所有管理员均有权限录入\更改学生信息,更新后该学生的院系编号将与管理员编号一致.请务必确保你输入的信息是正确的,否则将影响到其他考生的信息.注意:你的所有操作都将被记录在后台.</div>
+
+	<div class="mdl-textfield mdl-js-textfield">
+		<input id="reg_username" class="mdl-textfield__input" type="text"/>
+		<label class="mdl-textfield__label" for="reg_username">一卡通号</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield">
+		<input id="reg_pwd" class="mdl-textfield__input" type="text"/>
+		<label class="mdl-textfield__label" for="reg_pwd">学号</label>
+	</div>
+	<br>
+	<button
+	class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="onRegisterSubmit();"
+	>&nbsp;&nbsp;&nbsp;注 册&nbsp;&nbsp;&nbsp;</button>
+</div>
+
+</body>
+</html>

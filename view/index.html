@@ -1,0 +1,175 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>登录-校史校情知识竞赛2018</title>
+	<script src="js/jquery-2.1.4.js"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script src="js/json2.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="view/icon.css">
+    <link rel="stylesheet" href="view/material.indigo-blue.min.css">
+    <script defer src="js/material.min.js"></script>                          <!--引入的三个UI库-->
+
+
+    <script src="js/index-helper.js" type="text/javascript" charset="utf-8"></script>   <!--引入js文件-->
+    <script type="text/javascript" src="js/material-modal.js"></script>
+    <link href="view/css.css" type="text/css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+<style>
+.bg-img{
+    z-index: -1;
+    position: fixed;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+}
+</style>
+<div id="bg_img" class="bg-img"></div>
+<div id="userState"></div>
+<div id="prompt"> </div>
+
+<div id="login" class="dialog box-shadow1" style="display:none;">
+
+    <div class="login-title">
+        <h4 style="margin:0px;padding: 10px"><strong>欢迎参与校史校情知识竞赛<br>SEU 2018</strong></h4>
+    </div>
+    <div style="width:70%;margin:auto; padding-left: 30;padding-right: 30">
+    	<div class="mdl-textfield mdl-js-textfield">
+    		<input class="mdl-textfield__input" type="text" id="login_username">
+    		<label class="mdl-textfield__label" style="color:rgb(80,80,80);" for="login_username">用户名</label>
+    	</div>
+    	<br>
+    	<div class="mdl-textfield mdl-js-textfield">
+    		<input type="password" class="mdl-textfield__input" type="text" id="login_password">
+    		<label class="mdl-textfield__label" style="color:rgb(80,80,80);" for="login_password">密码</label>
+    	</div>
+    	<br>
+    	<div class="mdl-textfield mdl-js-textfield" style="width: 196px">
+    		<input class="mdl-textfield__input" type="text" id="login_captch">
+    		<label class="mdl-textfield__label" style="color:rgb(80,80,80);" for="login_captch">验证码</label>
+    	</div>
+    	<img id="captch_img" style="width:100px;height:40px;margin-top: 0px;margin-bottom: 20px;border: solid 2px;" onclick="onRequestCaptch();">
+
+    </div>
+
+
+    <div style="margin-bottom: 20px">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="setTimeout('onLoginSubmit();',300);">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登 录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+    </div>
+
+	<div class="note">
+		<!--此处是登陆处的提示信息-->
+		注:学生用户名为一卡通号,密码为学号.如果确定无法登陆,请联系院系辅导员进行额外注册.
+		<!--
+		用户名&nbsp;&nbsp;&nbsp;密码   <br>
+			213170000   09017000      <br>
+            213170001   08017001      <br>
+            213170002   08017002      <br>
+            213170003   08017003      <br>
+            213170004   07017004      <br>
+            213170005   09017005      <br>
+            213170006   09017006      <br>
+            213170007   07017007      <br>
+            213170008   07017008      <br>
+            213170009   07017009      <br>
+            213170010   07017010      <br>
+            213170011   05017020      <br>
+            213170012   09017030      <br>
+            213170013   06017040      <br>
+            213170014   05017050      <br>
+            213170015   05017060      <br>
+            213170016   05017070      <br>
+            admin05   	123456      <br>
+            admin06   	123456      <br>
+            admin07   	123456      <br>
+            admin08   	123456      <br>
+            admin09   	123456      <br>
+        -->
+	</div>
+	
+</div>
+
+
+	<!--check score是已经完成考试的考生再次登录或刷新页面时显示的布局,大致内容是显示个人信息和成绩-->
+<div id="check_score" class="dialog box-shadow1" style="display:none;">
+	<!--虽然已经完全依赖js生成代码，但是因为还没搞清旧的代码哪里有依赖所以这里还不能注释掉23333-->
+    <div class="login-title">
+        <h4 style="margin:0px;padding: 10px"><strong>欢迎参与校史校情知识竞赛<br>SEU 2018</strong></h4>
+    </div>
+    <div class="notice">
+	登录名为
+	<span id="check_score_NAME">xx</span>
+	的同学,你已经完成考试,成绩是
+	<span id="check_score_SCORE">xx</span>分.
+    </div>
+	<button style="border:solid 1px" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" \
+    onclick="onLogoutSubmit();">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退 出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button> 
+
+</div>
+
+
+
+<div id="exam_attention" class="dialog box-shadow1" style="display:none;">
+    <div class="login-title">
+        <h4 style="margin:0px;padding: 10px"><strong>欢迎参与校史校情知识竞赛<br>SEU 2018</strong></h4>
+    </div>
+    <div class="notice">
+    登录名为
+    <span id="exam_attention_NAME">xx</span>
+    的同学,你还没有完成考试,点击下面的按钮进入考试页面或者退出.
+    </div>
+    <a href="exam.php">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+            &nbsp;&nbsp;&nbsp;进入考试页面&nbsp;&nbsp;&nbsp;
+        </button>
+    </a>
+
+    <button style="border:solid 1px" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" \
+    onclick="onLogoutSubmit();">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退 出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button> 
+
+</div>
+
+<div id="admin_attention" class="dialog box-shadow1" style="display:none;">
+    <div class="login-title">
+        <h4 style="margin:0px;padding: 10px"><strong>欢迎参与校史校情知识竞赛<br>SEU 2018</strong></h4>
+    </div>
+    <div class="notice">
+    管理员
+    <span id="admin_attention_NAME">xx</span>
+    你已登录,点击下面的按钮查看院系分数情况或者退出.
+    </div>
+    <a href="department.php">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+            &nbsp;&nbsp;&nbsp;查看院系数据&nbsp;&nbsp;&nbsp;
+        </button>
+    </a>
+
+    <button style="border:solid 1px" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" \
+    onclick="onLogoutSubmit();">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退 出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button> 
+
+
+    
+
+</div>
+
+
+
+</body>
+
+</html>

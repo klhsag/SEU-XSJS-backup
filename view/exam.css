@@ -1,0 +1,71 @@
+
+.examClock{
+	position: fixed;
+	top: 5px;
+	right: 5px;
+}
+
+
+
+.question {
+	text-indent: 2em;
+	/*font-weight: 700;                          /*中等粗体的字符*/
+	/*font-size: 1.25em;*/
+	margin-bottom: 2em;
+}
+
+.qbutton {
+	/*background-color: inherit;                   /*加了这一句就可以保持一致了*/
+	width: 50%;
+	min-width: 200;
+	margin-top: 1em;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;                           /*水平居中*/
+	vertical-align: middle;                       /*垂直居中*/
+	border-radius: 2px;                          /*圆角修饰*/
+	/*font-weight: bold;*/                        /*不是特别建议加粗*/
+	letter-spacing: 2px;
+	height: 1.2em;
+    padding-top: 0.5em;
+    margin-top: 0;
+	color: #000000;
+	transition: all 0.1s linear;              /*过渡很美好, 我个人认为不简洁*/
+}
+
+
+.qbutton:hover {
+	
+	cursor: pointer;
+	background-color: #fdf5e6;
+	color: #000000;
+}
+
+
+.qbutton_selected {
+	/*background-color: inherit;                   /*加了这一句就可以保持一致了*/
+	width: 50%;
+	min-width: 200;
+	margin-top: 0em;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;                           /*水平居中*/
+	vertical-align: middle;                       /*垂直居中*/
+	border-radius: 2px;                          /*圆角修饰*/
+	/*font-weight: bold;*/                        /*不是特别建议加粗*/
+	letter-spacing: 2px;
+	color: #009688;
+	
+	height: 1.2em;
+    padding-top: 0.5em;
+	/*transition: all 0.3s linear;*/              /*过渡很美好, 我个人认为不简洁*/
+}
+
+.progressBar{
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left:0px;
+}
+
+

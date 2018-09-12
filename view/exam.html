@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>校史校情知识竞赛2018</title>
+	<script src="js/jquery-2.1.4.js"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script src="js/json2.js"></script>
+	<![endif]-->
+	<script src="js/highmaps.js"></script>
+	<script src="js/exam-helper.js" type="text/javascript" charset="utf-8"></script>
+
+	<link rel="stylesheet" href="view/icon.css">
+	<link rel="stylesheet" href="view/material.indigo-blue.min.css">
+
+	<script src="js/material-modal.js"></script>
+	<script defer src="js/material.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="view/css.css">
+	<link rel="stylesheet" type="text/css" href="view/exam.css">
+
+</head>
+
+<body>
+
+	<div style="background-color: rgba(0,0,0,0.5);position: fixed;width: 100%;height: 100%;z-index: -1;top: 0;left: 0;"></div>
+
+	<div id="before_exam" class="dialog box-shadow1"  style="display:none;">
+
+		 <div style="width:100%;background-color: #009688;color:#ffffff;display: inline-block;">
+		    <div style="float:left;font-size: 2em;margin:2em 2em 0em 2em;">考试说明</div>
+		    <div>
+		    	<p style="float:left;font-size:1.2em;margin-top:2em;text-align: left;margin-left: 0 auto;margin-bottom: 2em;padding-left: 2em;">
+		    		试卷结构: 单项选择20道,判断题10道,共100分.<br>
+		    		考试时间: 30分钟.<br>
+		    		注意事项1: 考试开始后如遇意外页面关闭,可以重新登录重新考试.<br>
+		    		注意事项2: 考试时间结束自动提交,提交后录入成绩.
+		    	</p>
+		    </div>
+		</div>
+		    
+
+		  <div class="notice">
+		  	登录名为<span id="before_exam_NAME"></span>的同学,你还没有完成考试,点击下面的按钮开始考试.
+		  </div>
+
+		    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-size: 24px" onclick="onExamRequest();">
+		      -开始考试-
+		    </a>
+
+
+		
+	</div>
+
+	<div id="exam_loading" class="dialog" style="display:none;">试题加载中...</div>
+
+	<style>
+		.qwrap{
+			margin-top:50px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+
+	<div>
+		<div id="exam" class="qwrap" style="display:none;">
+
+			<!--在exam-helper.js里搜索这些id,你将看到这些内容如何被js动态设置-->
+			<style>
+				.qbody{
+					background-image: url('../img/paper.png');
+					background-size: 100%;
+					background-repeat: no-repeat;
+					width: 90%;
+					max-width:700px;
+					margin-left: auto;
+					margin-right: auto;
+					height:1000px;
+					max-height: 100%;
+					text-align: center;
+					vertical-align: middle;
+					padding-top: 20px;
+					font-size: 2em;
+				}
+
+			</style>
+			<div class="qbody">
+				<div style="color:#e66a6a;margin-bottom: 50px;margin-top: 20px;">
+					<div id="exam_TIME" style="display:none;">
+					</div>
+					<div id="exam_TIME_OUT" style="display:none;">
+						考试结束
+					</div>
+				</div>
+
+				<h5>
+					<span id="q_type"></span>(共<span id="q_cnt"></span>题) 第<span id="q_ccnt"></span>题
+				</h5>
+				<div id="q_body" style="    font-size: 0.8em;
+										    padding-left: 5em;
+										    padding-right: 5em;
+										    line-height: 1.4em;
+										    letter-spacing: 1px;
+										    padding-top: 1em;
+										    padding-bottom: 1em;">
+					题干, 由js动态生成
+				</div> 
+				<div id="q_choice" style="display:none;">
+					<div>
+						<div class="qbutton" value="A">
+							题支, 由js动态生成, 标签也会随点击动态改变
+						</div>
+						<div class="qbutton" value="B"></div>
+						<div class="qbutton" value="C"></div>
+						<div class="qbutton" value="D"></div>
+					</div>
+				</div>
+
+				<div id="q_judge" style="display:none;">
+					<div>
+						<div class="qbutton" value="T">正确</div>
+						<div class="qbutton" value="F">错误</div>
+					</div>
+				</div>
+
+				<style>
+				.exam_btn{
+					margin-top: 30px;
+					font-size: 20px;
+				}
+				</style>
+				<div class="exam_btn">
+
+					<button id="q_last"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="上一题">上一题</button>
+					<button id="q_next"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="下一题">下一题</button>
+					<button id="q_submit"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="提交">提交</button>
+				</div>
+			</div>
+			
+
+			
+			
+		</div>
+	</div>
+	<div id="exam_progress">
+		<div id="exam_hc" class="progressBar" style="margin: 0 auto;height:100px"></div>
+	</div>
+	<!--exam finish是成功交卷后跳转的布局,大致内容是显示考试结果以及重置页面倒计时-->
+	<div id="exam_finish" class="big-page box-shadow1" style="display:none;">
+		<div class="login-title">
+			考试结束!<br>登录名为
+			<span id="exam_finish_NAME"></span>
+			的同学,你的分数是
+			<span id="exam_finish_SCORE"></span>
+			分.
+		</div>
+		<div class="notice">
+			已自动注销,本页将于
+			<span id="exam_finish_TIME"></span>
+			秒后重置,重置后你将无法查看到错题信息.(刷新以回到主页)
+		</div>
+
+		<div id="exam_finish_WRONGS">
+				<!--此处由js动态生成一个错题表,具体内容去exam-helper.js中搜索"exam_finish_WRONGS"-->
+		</div>
+
+	    <button style="margin-top:1em;" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="window.location.assign('index.php');">回到首页</button>
+		
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+	<title>管理员-校史校情知识竞赛2018</title>
+	<script src="js/jquery-2.1.4.js"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script src="js/json2.js"></script>
+	<![endif]-->
+	<script src="js/jquery-form.js"></script>
+	<link rel="stylesheet" href="view/icon.css">
+	<link rel="stylesheet" href="view/material.indigo-blue.min.css">
+	<script defer src="js/material.min.js"></script>
+	<script type="text/javascript" src="js/material-modal.js"></script>
+	<link rel="stylesheet" href="view/css.css">
+	<link rel="stylesheet" href="view/datatables.css">
+	<script src="js/department-helper.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/datatables.js"></script>
+	<script src="js/highcharts.js"></script>
+
+</head>
+<body>
+
+	<div class="big-page box-shadow1">
+		<div class="login-title">
+			SEU校史校情知识竞赛2018
+			<br>院系数据一览
+		</div>
+		<div class="notice">
+			<span>你好,</span>
+			<span id="admin_id"></span>
+			<span>系管理员.</span>
+		</div>
+
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="onRequestGrades();">刷新数据</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="ExportToExcel();">导出到excel文档（单击即可）</button>
+
+		<button style="border:solid 1px" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" onclick="window.open('register.php');">
+			额外注册
+		</button> 
+
+		<button style="border:solid 1px" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" \
+	    onclick="onLogoutSubmit();">
+	     退 出
+	    </button>
+
+
+
+		<h3>本院系数据</h3>
+		<div style="overflow-y: auto;margin-left: 5%;margin-right: 5%;">
+			<div id='grade_table' >
+				[表格]
+			</div>
+		</div>
+
+		<div id="data_hc" style="min-width:400px;height:300px"></div>
+
+		<div style="border-bottom: 1px solid rgba(0,0,0,.1);padding: 10px;margin:10px">
+		</div>
+		
+		<h3>院系数据汇总</h3>
+		<div style="overflow: auto;margin-left: 5%;margin-right: 5%;">
+			<div id='stat_table'>
+				[表格]
+			</div>
+		</div>
+
+	</div>
+	<div id='totalGradesDiv' style="display: none;">[表格]</div>
+</body>
+</html>
